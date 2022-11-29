@@ -16,3 +16,19 @@
 <img src="https://img.shields.io/badge/Sass-CC6699?style=for-the-badge&logo=sass&logoColor=white"/>
 </div>
 <br>
+
+
+To run the project you need to install the dependency packages with 
+
+```
+npm install
+```
+
+Once the dependencies are installed you can run the project with 
+
+```
+npm run start.
+```
+
+
+The design of the model was based on the styles and colors of the brand. Here is the link to the [Figma] https://www.figma.com/file/2VGJM6c0022BF2h4mX9eA4/Design-Component-(New-Matic-Link)?node-id=1%3A3377&t=H8KawOK1wZuvkOnC-1 for you to appreciate.
