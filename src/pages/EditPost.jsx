@@ -61,6 +61,7 @@ const EditPost = () => {
 
   return (
     <main className="container">
+        <div className='editCover'></div>
       <section className="modalComponent">
         <section className="formContainer">
           <form
@@ -104,6 +105,7 @@ const EditPost = () => {
               errorMessage="One value is required"
             >
               <TextAreaElement
+              className="editSize"
                 type="text"
                 name="postUpdate"
                 placeholder="Post content"

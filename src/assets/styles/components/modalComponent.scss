@@ -5,6 +5,10 @@
  @use '../lib/placeHolders.scss' as ph;
  @use '../lib/mixins.scss' as mixs;
 
+ .editCover{
+  height: 100vh;
+ }
+
 .modalComponent{
  height: 100%;
  width: 100%;
@@ -17,9 +21,12 @@
  align-items: center;
  background-color: rgba(0,0,0, 0.2);
  backdrop-filter: blur(2px);
- form{
+padding-top: 30px;
+padding-bottom: 60px;
+ .formContainer{
+  height: 80;
+ margin: 10%;
   div{
-    margin-top: 25px;
     width: 100%;
     display: flex;
     justify-content: space-around;
