@@ -22,7 +22,11 @@ const Home = () => {
       <div className="container__hero">
         <section className="blockHeader">
           <img className="blockHeader__img" src={bgIntro} alt="" />
-          <img className="blockHeader__backgroundImg" src={bgIntroM} alt="wireframes"></img>
+          <img
+            className="blockHeader__backgroundImg"
+            src={bgIntroM}
+            alt="wireframes"
+          ></img>
           <div className="blockHeader__data">
             <h1>Next generation digital banking</h1>
             <p>
@@ -30,9 +34,11 @@ const Home = () => {
               one-stop-shop for spending. saving. building. investing. and much
               more.
             </p>
-            <button type="button" className="btn">Request Invite</button>
+            <button type="button" className="btn">
+              Request Invite
+            </button>
           </div>
-          <div className="blockHeader-PhoneImg"/>
+          <div className="blockHeader-PhoneImg" />
         </section>
       </div>
 

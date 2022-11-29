@@ -7,7 +7,7 @@ import BlogPost from '../components/BlogPost';
 import LabelElement from '../components/LabelElement';
 import InputTextElement from '../components/InputTextElement';
 import TextAreaElement from '../components/TextAreaElement';
-import Pagination from '../components/Pagination'
+import Pagination from '../components/Pagination';
 import '../assets/styles/pages/blog.scss';
 import '../assets/styles/components/modalComponent.scss';
 
@@ -35,8 +35,6 @@ const Blog = () => {
     mode: 'onSubmit',
     resolver: yupResolver(schema),
   });
-
- 
 
   const [loading, setLoading] = useState(true);
   const [toRender, setToRender] = useState(false);
@@ -71,78 +69,96 @@ const Blog = () => {
     getData();
   }, [loading, deletePost, updatePost]);
 
-  
   const articles =
     toRender &&
     toRender.data.map((e) => {
-
-      const created = new Date(e.createdAt)
+      const created = new Date(e.createdAt);
       created.toDateString();
 
       return (
         <tr key={e.id} className="table__body">
-          <td className="table__body__item table__body__item--author">{[...e.author, '  ']}</td>
+          <td className="table__body__item table__body__item--author">
+            {[...e.author, '  ']}
+          </td>
           <td className="table__body__item">{[...e.title, '  ']}</td>
           <td className="table__body__item">{[...e.content, '  ']}</td>
           <td className="table__body__item">{`${created}`}</td>
-          <td className="table__body__item"><button type="button" onClick={() => { setDeletePost(e.id) }} className="btn--delete">Delete</button></td>
-          <td className="table__body__item"><button type="button" onClick={() => { setUpdatePost(e.id) }} className="btn--edit">Edit</button></td>
+          <td className="table__body__item">
+            <button
+              type="button"
+              onClick={() => {
+                setDeletePost(e.id);
+              }}
+              className="btn--delete"
+            >
+              Delete
+            </button>
+          </td>
+          <td className="table__body__item">
+            <button
+              type="button"
+              onClick={() => {
+                setUpdatePost(e.id);
+              }}
+              className="btn--edit"
+            >
+              Edit
+            </button>
+          </td>
         </tr>
-      )
-    }
-    );
+      );
+    });
 
   const onSubmit = async (data) => {
-   if(!updatePost){
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/articles`,
-        {
-          method: 'post',
-          headers: {
-            'Content-Type': 'application/json',
+    if (!updatePost) {
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_BASE_URL}/articles`,
+          {
+            method: 'post',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              author: `${data.author}`,
+              title: `${data.title}`,
+              content: `${data.post}`,
+            }),
           },
-          body: JSON.stringify({
-            author: `${data.author}`,
-            title: `${data.title}`,
-            content: `${data.post}`,
-          }),
-        },
-      );
-      if (response.status === 201) {
-        setLoading(true);
+        );
+        if (response.status === 201) {
+          setLoading(true);
+        }
+      } catch (err) {
+        throw new Error(err);
       }
-    } catch (err) {
-      throw new Error(err);
-    }
-   } else {
-    setUpdatePost(false)
-    try {
-      const response = await fetch(
-        `${process.env.REACT_APP_BASE_URL}/articles/${updatePost}`,
-        {
-          method: 'patch',
-          headers: {
-            'Content-Type': 'application/json',
+    } else {
+      setUpdatePost(false);
+      try {
+        const response = await fetch(
+          `${process.env.REACT_APP_BASE_URL}/articles/${updatePost}`,
+          {
+            method: 'patch',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            mode: 'cors',
+            body: JSON.stringify({
+              author: `${data.author}`,
+              title: `${data.title}`,
+              content: `${data.post}`,
+            }),
           },
-          mode: 'cors',
-          body: JSON.stringify({
-            author: `${data.author}`,
-            title: `${data.title}`,
-            content: `${data.post}`,
-          }),
-        },
-      );
-      
-      if (response.status === 201) {
-        setLoading(true);
-        setUpdatePost(false)
-      } 
-    } catch (err) {
-      throw new Error(err);
+        );
+
+        if (response.status === 201) {
+          setLoading(true);
+          setUpdatePost(false);
+        }
+      } catch (err) {
+        throw new Error(err);
+      }
     }
-   }
-   
   };
 
   const deleteItem = async () => {
@@ -162,7 +178,7 @@ const Blog = () => {
     } catch (err) {
       throw new Error(err);
     }
-  }
+  };
 
   return (
     <main className="container">
@@ -172,7 +188,7 @@ const Blog = () => {
             <h3>Are you sure you want to delete this post?</h3>
             <div>
               <button
-              type="button"
+                type="button"
                 onClick={() => {
                   setDeletePost(false);
                 }}
@@ -181,7 +197,7 @@ const Blog = () => {
                 No
               </button>
               <button
-              type="button"
+                type="button"
                 onClick={() => {
                   deleteItem();
                 }}
@@ -194,65 +210,74 @@ const Blog = () => {
         </section>
       ) : null}
 
-{updatePost !== false && updatePost !== undefined ? (
+      {updatePost !== false && updatePost !== undefined ? (
         <section className="modalComponent">
-           <section className="formContainer">
-        <form className="formContainer__form" onSubmit={handleSubmit(onSubmit)}>
-          <LabelElement
-            forElement="authorUpdate"
-            name="Author"
-            error={errors.authorUpdate}
-            errorMessage="One value is required"
-          >
-            <InputTextElement
-              type="text"
-              name="authorUpdate"
-              placeholder="Your name"
-              error={errors.authorUpdate}
-              register={register('authorUpdate', { required: true })}
-            />
-          </LabelElement>
+          <section className="formContainer">
+            <form
+              className="formContainer__form"
+              onSubmit={handleSubmit(onSubmit)}
+            >
+              <LabelElement
+                forElement="authorUpdate"
+                name="Author"
+                error={errors.authorUpdate}
+                errorMessage="One value is required"
+              >
+                <InputTextElement
+                  type="text"
+                  name="authorUpdate"
+                  placeholder="Your name"
+                  error={errors.authorUpdate}
+                  register={register('authorUpdate', { required: true })}
+                />
+              </LabelElement>
 
-          <LabelElement
-            forElement="titleUpdate"
-            name="Blog title"
-            error={errors.titleUpdate}
-            errorMessage="One value is required"
-          >
-            <InputTextElement
-              type="text"
-              name="titleUpdate"
-              placeholder="Post title"
-              error={errors.titleUpdate}
-              register={register('titleUpdate', { required: true })}
-            />
-          </LabelElement>
+              <LabelElement
+                forElement="titleUpdate"
+                name="Blog title"
+                error={errors.titleUpdate}
+                errorMessage="One value is required"
+              >
+                <InputTextElement
+                  type="text"
+                  name="titleUpdate"
+                  placeholder="Post title"
+                  error={errors.titleUpdate}
+                  register={register('titleUpdate', { required: true })}
+                />
+              </LabelElement>
 
-          <LabelElement
-            forElement="postUpdate"
-            name="Blog content"
-            error={errors.postUpdate}
-            errorMessage="One value is required"
-          >
-            <TextAreaElement
-              type="text"
-              name="postUpdate"
-              placeholder="Post content"
-              privateClass="post-content"
-              error={errors.postUpdate}
-              register={register('postUpdate', { required: true })}
-            />
-          </LabelElement>
-          <div>
-          <button onClick={() => {setUpdatePost(false)}} type="button" className="btn--undo">
-            Cancelar
-          </button>
-          <button  type="submit" className="btn">
-            Save
-          </button>
-          </div>
-        </form>
-      </section>
+              <LabelElement
+                forElement="postUpdate"
+                name="Blog content"
+                error={errors.postUpdate}
+                errorMessage="One value is required"
+              >
+                <TextAreaElement
+                  type="text"
+                  name="postUpdate"
+                  placeholder="Post content"
+                  privateClass="post-content"
+                  error={errors.postUpdate}
+                  register={register('postUpdate', { required: true })}
+                />
+              </LabelElement>
+              <div>
+                <button
+                  onClick={() => {
+                    setUpdatePost(false);
+                  }}
+                  type="button"
+                  className="btn--undo"
+                >
+                  Cancelar
+                </button>
+                <button type="submit" className="btn">
+                  Save
+                </button>
+              </div>
+            </form>
+          </section>
         </section>
       ) : null}
 
@@ -324,22 +349,22 @@ const Blog = () => {
       <section className="container__postContent">
         <div className="blockHeader__data--blog">
           <h2>Previous Articles</h2>
-          <p>
-            Review and edit previous blog post published on the homepage.
-          </p>
+          <p>Review and edit previous blog post published on the homepage.</p>
         </div>
-       
-          <table className="table">
-            <tr className="table__head">
-              <th className="table__head__item">Author name</th>
-              <th className="table__head__item">Title</th>
-              <th className="table__head__item">Content</th>
-              <th colspan="3" className="table__head__item">Date</th>
-            </tr>
-            {articles}
-          </table>
 
-          <Pagination />
+        <table className="table">
+          <tr className="table__head">
+            <th className="table__head__item">Author name</th>
+            <th className="table__head__item">Title</th>
+            <th className="table__head__item">Content</th>
+            <th colspan="3" className="table__head__item">
+              Date
+            </th>
+          </tr>
+          {articles}
+        </table>
+
+        <Pagination />
       </section>
       <BlogPost />
     </main>

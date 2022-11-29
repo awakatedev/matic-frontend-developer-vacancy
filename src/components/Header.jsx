@@ -5,8 +5,6 @@ import Logo from '../assets/images/logo.svg';
 import '../assets/styles/components/header.scss';
 import '../assets/styles/components/blockHeader.scss';
 
-
-
 const Header = () => {
   const navigationList = navRoutes.map(({ path, name, key }) => (
     <li key={key} className="menu__item">
@@ -27,13 +25,15 @@ const Header = () => {
           <ul className="menu">{navigationList}</ul>
         </nav>
         <div className="overBar__request">
-          <button type="button" className="btn"><a href="">GitHub repo</a></button>
+          <button type="button" className="btn">
+            <a href="">GitHub repo</a>
+          </button>
         </div>
         <div className="overBar__mobile-menu">
           <label for="menu" className="lbl-menu">
-            <div className="spn1"/>
-            <div className="spn2"/>
-            <div className="spn3"/>
+            <div className="spn1" />
+            <div className="spn2" />
+            <div className="spn3" />
           </label>
         </div>
       </section>

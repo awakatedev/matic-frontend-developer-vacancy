@@ -8,12 +8,8 @@ const NotFound = () => {
       'Jhoanthan Hartswing Saldarriaga Gallango. Web-Developer and crypto enthusiastic',
   });
   return (
-    <main className='container Error'>
-       <img
-            className="Error__img"
-            src={Error}
-            alt=""
-          />
+    <main className="container Error">
+      <img className="Error__img" src={Error} alt="" />
     </main>
   );
 };
