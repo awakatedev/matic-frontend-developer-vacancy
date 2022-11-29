@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
+import { NavLink } from 'react-router-dom';
 import useSeo from '../hooks/useSeo';
 import BlogPost from '../components/BlogPost';
 import LabelElement from '../components/LabelElement';
@@ -12,12 +13,9 @@ import '../assets/styles/pages/blog.scss';
 import '../assets/styles/components/modalComponent.scss';
 
 const schema = yup.object().shape({
-  author: yup.string(),
-  title: yup.string(),
-  post: yup.string(),
-  authorUpdate: yup.string(),
-  titleUpdate: yup.string(),
-  postUpdate: yup.string(),
+  author: yup.string().required(),
+  title: yup.string().required(),
+  post: yup.string().required(),
 });
 
 const Blog = () => {
@@ -76,7 +74,8 @@ const Blog = () => {
       created.toDateString();
 
       return (
-        <tr key={e.id} className="table__body">
+        <tbody key={e.id} className="table__body">
+          <tr>
           <td className="table__body__item table__body__item--author">
             {[...e.author, '  ']}
           </td>
@@ -95,17 +94,15 @@ const Blog = () => {
             </button>
           </td>
           <td className="table__body__item">
-            <button
-              type="button"
-              onClick={() => {
-                setUpdatePost(e.id);
-              }}
+            <NavLink exact="true" to='/blog/edit'
               className="btn--edit"
+              onClick={() => {localStorage.setItem('id', `${e.id}`)}}
             >
               Edit
-            </button>
+            </NavLink>
           </td>
-        </tr>
+          </tr>
+        </tbody>
       );
     });
 
@@ -210,77 +207,6 @@ const Blog = () => {
         </section>
       ) : null}
 
-      {updatePost !== false && updatePost !== undefined ? (
-        <section className="modalComponent">
-          <section className="formContainer">
-            <form
-              className="formContainer__form"
-              onSubmit={handleSubmit(onSubmit)}
-            >
-              <LabelElement
-                forElement="authorUpdate"
-                name="Author"
-                error={errors.authorUpdate}
-                errorMessage="One value is required"
-              >
-                <InputTextElement
-                  type="text"
-                  name="authorUpdate"
-                  placeholder="Your name"
-                  error={errors.authorUpdate}
-                  register={register('authorUpdate', { required: true })}
-                />
-              </LabelElement>
-
-              <LabelElement
-                forElement="titleUpdate"
-                name="Blog title"
-                error={errors.titleUpdate}
-                errorMessage="One value is required"
-              >
-                <InputTextElement
-                  type="text"
-                  name="titleUpdate"
-                  placeholder="Post title"
-                  error={errors.titleUpdate}
-                  register={register('titleUpdate', { required: true })}
-                />
-              </LabelElement>
-
-              <LabelElement
-                forElement="postUpdate"
-                name="Blog content"
-                error={errors.postUpdate}
-                errorMessage="One value is required"
-              >
-                <TextAreaElement
-                  type="text"
-                  name="postUpdate"
-                  placeholder="Post content"
-                  privateClass="post-content"
-                  error={errors.postUpdate}
-                  register={register('postUpdate', { required: true })}
-                />
-              </LabelElement>
-              <div>
-                <button
-                  onClick={() => {
-                    setUpdatePost(false);
-                  }}
-                  type="button"
-                  className="btn--undo"
-                >
-                  Cancelar
-                </button>
-                <button type="submit" className="btn">
-                  Save
-                </button>
-              </div>
-            </form>
-          </section>
-        </section>
-      ) : null}
-
       <section className="container__hero--blog">
         <div className="blockHeader--blog">
           <div className="blockHeader__data--blog">
@@ -353,16 +279,16 @@ const Blog = () => {
         </div>
 
         <table className="table">
-          <tr className="table__head">
-            <th className="table__head__item">Author name</th>
-            <th className="table__head__item">Title</th>
-            <th className="table__head__item">Content</th>
-            <th colspan="3" className="table__head__item">
-              Date
-            </th>
-          </tr>
-          {articles}
-        </table>
+            <thead className="table__head">
+              <tr>
+              <td className="table__head__item">Author name</td>
+              <td className="table__head__item">Title</td>
+              <td className="table__head__item">Content</td>
+              <td colSpan="3" className="table__head__item">Date</td>
+              </tr>
+            </thead>
+            {articles}
+          </table>
 
         <Pagination />
       </section>
