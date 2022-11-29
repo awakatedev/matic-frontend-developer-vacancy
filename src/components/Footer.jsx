@@ -42,7 +42,7 @@ const Footer = () => {
         </section>
         <div className="blockDataFooter__End">
           <button type="button" className="blockDataFooter__legend btn">
-            <a href="">GitHub repo</a>
+            <a href="https://github.com/awakatedev/matic-frontend-developer-vacancy">GitHub repo</a>
           </button>
           <p className="blockDataFooter__legend rights">
             © Easybank. All Rights Reserved

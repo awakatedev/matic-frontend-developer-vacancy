@@ -26,7 +26,7 @@ const Header = () => {
         </nav>
         <div className="overBar__request">
           <button type="button" className="btn">
-            <a href="">GitHub repo</a>
+            <a href="https://github.com/awakatedev/matic-frontend-developer-vacancy">GitHub repo</a>
           </button>
         </div>
         <div className="overBar__mobile-menu">
