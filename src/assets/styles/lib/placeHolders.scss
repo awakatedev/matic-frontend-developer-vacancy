@@ -1,0 +1,46 @@
+/*--------------------------\
+      %Place holders
+\--------------------------*/
+@use './variables.scss' as vars;
+
+%button-styles {
+    border-radius: 100px;
+    outline: none;
+    cursor: pointer;
+    padding: 13px 30px;
+    border: none;
+    color: vars.$LightGrayishBlue;
+    font-weight: vars.$fontBold__2;
+    font-size: 1.3rem;
+    letter-spacing: 0.5px;
+    background: linear-gradient(0.25turn, vars.$LimeGreen, vars.$BrightCyan);
+    a{
+      color: vars.$LightGrayishBlue;
+      text-decoration: none;
+    }
+  }
+  %h2-text {
+    font-size: vars.$h2-size;
+    font-weight: vars.$fontBold;
+    line-height: vars.$h-height;
+  }
+  %h3-text {
+    font-size: vars.$h3-size;
+    font-weight: vars.$fontBold;
+    line-height: vars.$h-height;
+  }
+  %p-text {
+    font-size: vars.$p-size;
+    font-weight: vars.$fontMedium;
+    line-height: vars.$p-height;
+  }
+  %text-articlesSection {
+    font-size: vars.$p-size;
+    font-weight: vars.$fontLite;
+    line-height: vars.$p-height;
+  }
+  %footer-links {
+    font-size: vars.$footer-size;
+    font-weight: vars.$fontLite;
+    line-height: vars.$p-height;
+  }

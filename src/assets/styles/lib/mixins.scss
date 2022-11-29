@@ -1,0 +1,14 @@
+/*----------------------------------\
+          @MIXINS
+ \---------------------------------*/
+ @use './variables.scss' as vars;
+ 
+ @mixin respond-to($width){
+    @media only screen and (min-width:$width){
+      @content; }
+  }
+
+  @mixin respondMax-to($width){
+    @media only screen and (max-width:$width){
+      @content; }
+  }

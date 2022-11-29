@@ -1,0 +1,27 @@
+/*----------------------------------\
+            inputTextElement
+ \---------------------------------*/
+@use '../lib/variables.scss' as vars;
+@use '../lib/placeHolders.scss' as ph;
+@use '../lib/mixins.scss' as mixs;
+
+.inputTextElement {
+    padding: 1em;
+    border-radius: 10px;
+    outline: none;
+    border: 2px solid vars.$LightGrayishBlue;
+    resize: none;
+}
+
+.inputTextElementError {
+    padding: 1em;
+    margin-bottom: 0.5em;
+    border-radius: 10px;
+    outline: none;
+    border: 1px solid vars.$error;
+    resize: none;
+}
+
+.post-content {
+    height: 200px;
+}

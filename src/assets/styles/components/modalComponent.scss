@@ -1,0 +1,99 @@
+/*----------------------------------\
+          _modal
+ \---------------------------------*/
+ @use '../lib/variables.scss' as vars;
+ @use '../lib/placeHolders.scss' as ph;
+ @use '../lib/mixins.scss' as mixs;
+
+.modalComponent{
+ height: 100%;
+ width: 100%;
+ z-index: 1000;
+ position: fixed;
+ top: 0;
+ right: 0;
+ display: flex;
+ justify-content: center;
+ align-items: center;
+ background-color: rgba(0,0,0, 0.2);
+ backdrop-filter: blur(2px);
+ form{
+  div{
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 10px;
+    button{
+      width: 80%;
+    }
+    .btn--undo{
+      width: 80%;
+      border-radius: 100px;
+      outline: none;
+      cursor: pointer;
+      padding: 13px 30px;
+      border: none;
+      color: vars.$LightGrayishBlue;
+      font-weight: vars.$fontBold__2;
+      font-size: 1.3rem;
+      letter-spacing: 0.5px; 
+      background: transparent;
+      color: vars.$DarkBlueO;
+      border: solid 1px vars.$DarkBlueO;
+      &:hover{
+        background: rgb(243, 243, 243);
+      }
+  }
+  }
+}
+}
+
+.modalComponent--delete{
+  background-color: vars.$white;
+  border-radius: 5px;
+  padding: 30px;
+  margin: 0 20px;
+  div{
+    margin-top: 25px;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    gap: 10px;
+    .btn--undo{
+        width: 80%;
+        border-radius: 100px;
+        outline: none;
+        cursor: pointer;
+        padding: 13px 30px;
+        border: none;
+        color: vars.$LightGrayishBlue;
+        font-weight: vars.$fontBold__2;
+        font-size: 1.3rem;
+        letter-spacing: 0.5px; 
+        background: transparent;
+        color: vars.$DarkBlueO;
+        border: solid 1px vars.$DarkBlueO;
+    }
+    .btn--execute{
+        width: 80%;
+        border-radius: 100px;
+        outline: none;
+        cursor: pointer;
+        padding: 13px 30px;
+        border: none;
+        color: vars.$LightGrayishBlue;
+        font-weight: vars.$fontBold__2;
+        font-size: 1.3rem;
+        letter-spacing: 0.5px; 
+        background: red;
+        color: vars.$white;
+        &:hover{
+            background: rgb(255, 89, 89);  
+        }
+    }
+  }
+}
+

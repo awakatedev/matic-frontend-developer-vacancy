@@ -1,0 +1,24 @@
+/*----------------------------------\
+            labelElement
+ \---------------------------------*/
+ @use '../lib/variables.scss' as vars;
+ @use '../lib/placeHolders.scss' as ph;
+ @use '../lib/mixins.scss' as mixs;
+
+
+ .label-form {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 2em;
+
+    &__span {
+        color: vars.$DarkBlue;
+        margin-bottom: 0.5em;
+        font-size: vars.$p-size;
+        font-weight: vars.$fontBold__2;
+    }
+
+    &__error {
+        color: vars.$error
+    }
+ }

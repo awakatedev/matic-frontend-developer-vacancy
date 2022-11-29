@@ -1,0 +1,51 @@
+/*----------------------------------\
+          _blogPost
+ \---------------------------------*/
+ @use '../lib/variables.scss' as vars;
+ @use '../lib/placeHolders.scss' as ph;
+ @use '../lib/mixins.scss' as mixs;
+
+ @include mixs.respond-to(900px) {
+
+      // for section of articles
+      .blockArticles {
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 9em;
+        padding-bottom: 8em;
+        h2 {
+          padding-left: 57px;
+          text-align: start;
+          font-size: 3.2rem;
+        }
+        &__articles {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(320px, 40%));
+          gap: 40px;
+          justify-content: center;
+          .articleBox__data {
+            h3 {
+              padding-top: 0.5em;
+            }
+            p {
+              font-size: 1.3em;
+            }
+          }
+        }
+      }
+
+ }
+  // breakpoint__2
+  @include mixs.respond-to(1227px) {
+    // for articles
+    .blockArticles {
+        &__articles {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 15px;
+          &__data {
+            padding: 0 120px;
+          }
+        }
+      }
+  }

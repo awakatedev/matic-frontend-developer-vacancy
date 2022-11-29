@@ -1,0 +1,56 @@
+/*----------------------------------\
+                Pagination
+ \---------------------------------*/
+ @use '../lib/variables.scss' as vars;
+ @use '../lib/placeHolders.scss' as ph;
+ @use '../lib/mixins.scss' as mixs;
+
+ .pagination {
+    margin-top: 4em;
+    width: 100%;
+    border-top: 2px solid vars.$LightGrayishBlue;
+    height: 50px;
+    &__box {
+        display: flex;
+        justify-content: space-between;
+        height: 100%;
+        align-items: center;
+        color: vars.$GrayishBlue;
+        &__left, &__right {
+            color: vars.$GrayishBlue;
+            font-size: 1.2em;
+            cursor: pointer;
+            &:hover {
+                color:vars.$LimeGreenHover;
+            }
+        }
+    }
+
+    &__items {
+        display: flex;
+        display: 100%;
+    }
+
+    .round-effect{
+        cursor:pointer;
+        font-size:1.2em;
+        text-align:center;
+        height: 50px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        &:hover{
+            text-decoration: none;
+            color:vars.$LimeGreenHover;
+          }
+      }
+      
+      .active{
+        color:vars.$LimeGreenHover;
+        border-top: 3px solid vars.$LimeGreenHover;
+      }
+ }
+
+ 
+  
