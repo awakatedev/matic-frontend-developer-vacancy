@@ -26,7 +26,7 @@ const Home = () => {
             className="blockHeader__backgroundImg"
             src={bgIntroM}
             alt="wireframes"
-          ></img>
+          />
           <div className="blockHeader__data">
             <h1>Next generation digital banking</h1>
             <p>

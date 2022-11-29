@@ -1,5 +1,5 @@
-import React from 'react';
 import Error from '../assets/images/404.png';
+import useSeo from '../hooks/useSeo';
 
 const NotFound = () => {
   useSeo({
